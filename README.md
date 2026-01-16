@@ -1,4 +1,4 @@
-<img width="1918" height="507" alt="image" src="https://github.com/user-attachments/assets/316ed83c-7832-4b35-8061-1ac13c281083" /># 🛡️ Network Traffic Analysis: HTTP vs. HTTPS Security Lab
+# 🛡️ Network Traffic Analysis: HTTP vs. HTTPS Security Lab
 
 ![Wireshark](https://img.shields.io/badge/Tool-Wireshark-blue?style=for-the-badge&logo=wireshark)
 ![Security](https://img.shields.io/badge/Focus-Network%20Security-red?style=for-the-badge)
@@ -24,7 +24,7 @@ Neste cenário, analisei o tráfego de um formulário de login em uma aplicaçã
 > [!CAUTION]
 > **Vulnerabilidade Identificada:** O protocolo HTTP não criptografa os dados. Como resultado, o nome de usuário e a senha foram capturados em **texto claro (plaintext)** diretamente do payload do pacote.
 
-**<img width="1914" height="92" alt="image" src="https://github.com/user-attachments/assets/fe6c676d-724c-40db-8114-16f1e696109d" />**
+**<img width="1914" height="92" alt="image" src="https://github.com/user-attachments/assets/73626f1e-467b-4fa0-80df-ad23ef26b903" />**
 *Figura 1: Usando o filtro para encontrar o pacote.*
 
 **<img width="1255" height="830" alt="image" src="https://github.com/user-attachments/assets/cde7b39d-f807-48b6-84fd-dc35b3af4438" />**
