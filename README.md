@@ -1,4 +1,4 @@
-# 🛡️ Network Traffic Analysis: HTTP vs. HTTPS Security Lab
+<img width="1918" height="507" alt="image" src="https://github.com/user-attachments/assets/316ed83c-7832-4b35-8061-1ac13c281083" /># 🛡️ Network Traffic Analysis: HTTP vs. HTTPS Security Lab
 
 ![Wireshark](https://img.shields.io/badge/Tool-Wireshark-blue?style=for-the-badge&logo=wireshark)
 ![Security](https://img.shields.io/badge/Focus-Network%20Security-red?style=for-the-badge)
@@ -24,7 +24,7 @@ Neste cenário, analisei o tráfego de um formulário de login em uma aplicaçã
 > [!CAUTION]
 > **Vulnerabilidade Identificada:** O protocolo HTTP não criptografa os dados. Como resultado, o nome de usuário e a senha foram capturados em **texto claro (plaintext)** diretamente do payload do pacote.
 
-**<img width="1919" height="617" alt="image" src="https://github.com/user-attachments/assets/14afb94a-9d03-45ac-9604-aba8a2229c10" />**
+**<img width="1914" height="92" alt="image" src="https://github.com/user-attachments/assets/fe6c676d-724c-40db-8114-16f1e696109d" />**
 *Figura 1: Usando o filtro para encontrar o pacote.*
 
 **<img width="1255" height="830" alt="image" src="https://github.com/user-attachments/assets/cde7b39d-f807-48b6-84fd-dc35b3af4438" />**
@@ -40,11 +40,11 @@ Para fins comparativos, realizei a mesma análise em uma conexão protegida por 
 * **Criptografia de Dados:** Ao contrário do HTTP, o conteúdo da aplicação (*Application Data*) tornou-se ilegível sem a chave privada.
 * **Conclusão:** A integridade e confidencialidade dos dados foram mantidas, impedindo ataques de interceptação (*Sniffing*).
 
-**<img width="1919" height="604" alt="image" src="https://github.com/user-attachments/assets/55a95537-0da4-481e-acd6-831b874c733c" />**
+**<img width="1918" height="507" alt="image" src="https://github.com/user-attachments/assets/9a1021d8-0b5e-4967-8bd5-8dc8473367cd" />**
 *Figura 3: Filtrando para achar o Handshake TLS*
 
 
-**<img width="1907" height="613" alt="image" src="https://github.com/user-attachments/assets/30aa56af-68d5-4532-8af5-74f129d8be9f" />**
+**<img width="1252" height="463" alt="image" src="https://github.com/user-attachments/assets/b470dd63-8e9d-4fc6-ab2b-342456d0bf56" />**
 *Figura 4: Payload (do Reddit) criptografado e ilegível para observadores externos.*
 
 ---
