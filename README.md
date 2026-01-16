@@ -40,7 +40,7 @@ Para fins comparativos, realizei a mesma análise em uma conexão protegida por 
 * **Criptografia de Dados:** Ao contrário do HTTP, o conteúdo da aplicação (*Application Data*) tornou-se ilegível sem a chave privada.
 * **Conclusão:** A integridade e confidencialidade dos dados foram mantidas, impedindo ataques de interceptação (*Sniffing*).
 
-**<img width="1919" height="617" alt="image" src="https://github.com/user-attachments/assets/7bd26020-ac61-4708-aa84-4b166c7c05de" />**
+**<img width="1919" height="604" alt="image" src="https://github.com/user-attachments/assets/55a95537-0da4-481e-acd6-831b874c733c" />**
 *Figura 3: Filtrando para achar o Handshake TLS*
 
 
