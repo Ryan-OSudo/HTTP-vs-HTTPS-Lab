@@ -1,0 +1,70 @@
+# 🛡️ Network Traffic Analysis: HTTP vs. HTTPS Security Lab
+
+![Wireshark](https://img.shields.io/badge/Tool-Wireshark-blue?style=for-the-badge&logo=wireshark)
+![Security](https://img.shields.io/badge/Focus-Network%20Security-red?style=for-the-badge)
+![Protocol](https://img.shields.io/badge/Protocols-HTTP%20%7C%20TLS-green?style=for-the-badge)
+
+## 🎯 Objetivos Técnicos
+* **Packet Sniffing:** Captura de tráfego em tempo real utilizando Wireshark.
+* **Protocol Analysis:** Inspeção profunda de pacotes nas camadas de Transporte e Aplicação.
+* **Security Auditing:** Identificação de exposição de credenciais em redes inseguras.
+* **Traffic Filtering:** Aplicação de filtros avançados para isolamento de eventos críticos.
+
+---
+
+## 🔬 Cenário 1: Exposição de Dados em HTTP (Inseguro)
+Neste cenário, analisei o tráfego de um formulário de login em uma aplicação rodando sobre o protocolo **HTTP (Porta 80)**.
+
+### Metodologia de Investigação
+1.  **Captura:** A interface de rede foi monitorada durante o envio do formulário.
+2.  **Filtragem:** Utilizei o filtro `http.request.method == "POST"` para encontrar o pacote de envio de dados.
+3.  **Reconstrução:** Através do recurso *Follow TCP Stream*, a conversa completa foi reconstruída.
+
+### Resultado da Análise
+> [!CAUTION]
+> **Vulnerabilidade Identificada:** O protocolo HTTP não criptografa os dados. Como resultado, o nome de usuário e a senha foram capturados em **texto claro (plaintext)** diretamente do payload do pacote.
+
+**<img width="1919" height="530" alt="image" src="https://github.com/user-attachments/assets/3d2cc626-dde8-4f63-afe4-8aff7af3c24a" />**
+*Figura 1: Usando o filtro para encontrar o pacote.*
+
+**<img width="1257" height="831" alt="image" src="https://github.com/user-attachments/assets/5e816dfd-f1c4-4471-a21c-e28c105bb677"/>**
+*Figura 2: Credenciais expostas em cima da resposta do PKT do servidor.*
+
+---
+
+## 🔐 Cenário 2: Proteção via TLS/HTTPS (Seguro)
+Para fins comparativos, realizei a mesma análise em uma conexão protegida por **HTTPS (Porta 443)**.
+
+### Observações Técnicas
+* **Handshake TLS:** Foi possível observar o processo de troca de certificados e negociação de cifras (Cipher Suites).
+* **Criptografia de Dados:** Ao contrário do HTTP, o conteúdo da aplicação (*Application Data*) tornou-se ilegível sem a chave privada.
+* **Conclusão:** A integridade e confidencialidade dos dados foram mantidas, impedindo ataques de interceptação (*Sniffing*).
+
+**<img width="1919" height="619" alt="image" src="https://github.com/user-attachments/assets/1524b484-4a8f-4aff-9f6c-55ac11ecaea0" />**
+*Figura 3: Filtrando para achar o Handshake TLS*
+
+
+**<img width="1257" height="825" alt="image" src="https://github.com/user-attachments/assets/df07d130-a9c6-4fb8-a4a1-1c9a7110ad92" />**
+*Figura 4: Payload criptografado e ilegível para observadores externos.*
+
+---
+
+## 🛠️ Ferramentas & Filtros Utilizados
+
+| Filtro | Finalidade |
+| :--- | :--- |
+| `http.request.method == "POST"` | Isolar envios de formulários de login. |
+| `tcp.port == 80` | Monitorar tráfego HTTP padrão. |
+| `tls.handshake.type == 1` | Identificar o início de conexões seguras (Client Hello). |
+| `ip.addr == [SEU_IP]` | Filtrar tráfego de/para uma máquina específica. |
+
+---
+
+## 💡 Conclusões
+Este projeto reforça a necessidade crítica da adoção do protocolo **HTTPS** em qualquer sistema que manipule dados sensíveis. A análise técnica demonstra que, em redes desprotegidas, a interceptação de dados é trivial caso protocolos legados sejam utilizados.
+
+---
+
+**Desenvolvido por Ryan G**
+* Futuro Analista de Redes / Segurança em formação.
+* LinkedIn: https://www.linkedin.com/in/ryangoncalves/
